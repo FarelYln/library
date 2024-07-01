@@ -26,8 +26,8 @@ $data = mysqli_query(
     <div class="container">
         <h3 class="text-center mt-4">Data Pinjaman</h3>
         <a href="create.php" class="btn btn-primary mt-2">Pinjam Buku</a>
-        <table class="table table-hover mt-2">
-            <thead>
+        <table class="table table-bordered table-hover text-center mt-2">
+            <thead class="table-secondary">
                 <tr>
                     <th>ID</th>
                     <th>Nama Peminjam</th>

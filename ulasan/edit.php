@@ -1,7 +1,6 @@
 <?php 
 require_once __DIR__ ."/../navbar.php";
 
-// Pastikan ID ulasan yang akan di-edit ada dalam parameter GET
 $id = $_GET['id'];
 
 // Ambil data ulasan yang akan di-edit dari database

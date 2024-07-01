@@ -15,9 +15,9 @@ require_once __DIR__ ."/../navbar.php";
             Halaman buku
         </h3>
 
-        <table class="table table-hover" class="mt-2">
-            <a href="create.php" class="btn btn-primary mt-2">Tambah Buku</a>
-            <thead>
+        <table class="table table-bordered table-hover text-center " class="mt-2">
+            <a href="create.php" class="btn btn-primary mt-2 mb-2">Tambah Buku</a>
+            <thead class="table-primary">
                 <tr>
                     <th>ID</th>
                     <th>Nama Buku</th>

@@ -13,9 +13,9 @@ require_once __DIR__ ."/../navbar.php";
     <div class="container">
         <h3 class="text-center mt-4">Ini Halaman User</h3>
 
-        <table class="table tale-hover mt-2 text-center">
+        <table class="table table-bordered tale-hover mt-2 text-center">
             <a href="create.php" class="btn btn-primary mt-2">Tambah User</a>
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th>ID</th>
                     <th>User</th>
@@ -33,11 +33,11 @@ require_once __DIR__ ."/../navbar.php";
                     <td><?= $no++ ?></td>
                     <td><?=$d['nama'] ?></td>
                     <td><?= $d['no_hp']?></td>
-                    <td>
-                        <!-- <a href="edit.php?id=<?=  $d['id'] ?>" class="btn btn-success">Edit</a>
+                    <!-- <td>
+                        <a href="edit.php?id=<?=  $d['id'] ?>" class="btn btn-success">Edit</a>
 
-                        <a href="delete.php?id=<?= $d['id']; ?>" onclick="return confirm('apakah anda yakin?')" class="btn btn-danger">Hapus</a> -->
-                    </td>
+                        <a href="delete.php?id=<?= $d['id']; ?>" onclick="return confirm('apakah anda yakin?')" class="btn btn-danger">Hapus</a>
+                    </td> -->
                 </tr>
             <?php 
         }

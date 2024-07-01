@@ -21,9 +21,9 @@ $data = mysqli_query($koneksi,
         <h3 class="text-center mt-4">
             Ulasan Dari User
         </h3>
-        <table class="table table-hover text-center mt-2">
+        <table class="table table-bordered table-hover text-center mt-2">
             <a href="create.php" class="btn btn-primary mt-2">Tambah Ulasan</a>
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th>ID</th>
                     <th>Rating</th>

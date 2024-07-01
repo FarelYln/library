@@ -31,12 +31,15 @@ require_once __DIR__ . "/koneksi.php";
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="/dashboard.php">Dashboard</a>
         </li>
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="/buku/index.php">Buku</a>
+        </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Lainnya
           </a>
           <ul class="dropdown-menu dropdown-menu-end mt-2">
-            <li><a class="dropdown-item" href="/buku/index.php">Buku</a></li>
             <li><a class="dropdown-item" href="/genre/index.php">genre</a></li>
             <li><a class="dropdown-item" href="/pinjaman/index.php">Pinjaman</a></li>
             <li><a href=""></a></li>
@@ -49,7 +52,6 @@ require_once __DIR__ . "/koneksi.php";
     </div>
   </div>
 </nav>
-
 </body>
 
 </html>

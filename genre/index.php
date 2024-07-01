@@ -14,9 +14,9 @@ require_once __DIR__ ."/../navbar.php";
         <h3 class="text-center mt-4">
             Genre yang Tersedia
         </h3>
-        <table class="text-center table table-hover mt-2">
+        <table class=" table-bordered text-center table table-hover mt-2">
             <a href="create.php" class="btn btn-primary mt-2">Tambah genre</a>
-            <thead>
+            <thead class="table-secondary">
                 <tr>
                     <th>Id</th>
                     <th>Genre</th>
