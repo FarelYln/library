@@ -32,14 +32,14 @@ body {
     display:block;
     text-align:center;
     margin: 20%;
-    font-size: 50px;
+    font-size: 40px;
     text-shadow: 2px 5px#000;
     transition: 0.5s;
     
   }
 
   h1:hover{
-    font-size: 55px;
+    font-size: 42px;
     color: rgb(255, 235, 168);
     text-shadow: 7px 10px #000;
   }

@@ -28,8 +28,7 @@ require_once __DIR__ ."/../navbar.php";
                 </tr>
             </thead>
             <tbody class="table-warning-subtle">
-            <?php 
-            
+            <?php
             $query =
             "
                 SELECT buku.id, buku.nama_buku, genres.nama_genre, buku.penerbit, buku.tanggal_terbit 
