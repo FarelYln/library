@@ -8,12 +8,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal_terbit = mysqli_real_escape_string($koneksi, $_POST['tanggal_terbit']);
     $story = mysqli_real_escape_string($koneksi, $_POST['story']);
     
-    $query = "INSERT INTO buku (nama_buku, genre_buku, penerbit, tanggal_terbit, story) VALUES ('$nama_buku', '$genre_buku', '$penerbit', '$tanggal_terbit', '$story')";
-    if (mysqli_query($koneksi, $query)) {
-        header('location: index.php');
-        exit();
+    // Cek apakah nama_buku sudah ada
+    $cek_query = "SELECT * FROM buku WHERE nama_buku = '$nama_buku'";
+    $cek_result = mysqli_query($koneksi, $cek_query);
+
+    if (mysqli_num_rows($cek_result) > 0) {
+        $pesan = "Nama buku sudah ada. Silakan gunakan nama lain.";
     } else {
-        $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        $query = "INSERT INTO buku (nama_buku, genre_buku, penerbit, tanggal_terbit, story) VALUES ('$nama_buku', '$genre_buku', '$penerbit', '$tanggal_terbit', '$story')";
+        if (mysqli_query($koneksi, $query)) {
+            header('location: index.php');
+            exit();
+        } else {
+            $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        }
     }
 }
 
@@ -32,6 +40,9 @@ $result_genre = mysqli_query($koneksi, $query_genre);
 <body>
 <div class="container">
     <h2 class="mt-4">Tambah Buku Baru</h2>
+    <?php if (isset($pesan)): ?>
+        <div class="alert alert-danger"><?= htmlspecialchars($pesan); ?></div>
+    <?php endif; ?>
     <form action="create.php" method="POST" id="form">
         <div class="row g-2 mt-3">
             <div class="col-md">

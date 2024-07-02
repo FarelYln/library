@@ -31,26 +31,44 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit User</title>
+    <script>
+        function validateForm() {
+            var nama = document.getElementById("nama").value;
+            var no_hp = document.getElementById("no_hp").value;
+            var namaRegex = /^[a-zA-Z\s]+$/;
+            var no_hpRegex = /^[0-9]{1,12}$/;
+
+            if (!namaRegex.test(nama)) {
+                alert("Nama tidak boleh mengandung angka.");
+                return false;
+            }
+            if (!no_hpRegex.test(no_hp)) {
+                alert("Nomor HP harus berupa angka dan tidak lebih dari 12 digit.");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 
 <body>
     <div class="container">
         <h2 class="mt-2">Edit User</h2>
-        <form action="edit.php" method="POST" id="form">
+        <form action="edit.php" method="POST" id="form" onsubmit="return validateForm()">
             <input type="hidden" name="id" value="<?= $user['id']; ?>">
-        <div class="row g-2 mt-3">
+            <div class="row g-2 mt-3">
                 <div class="col-md">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="nama" name="nama" value="<?= htmlspecialchars($user['nama']); ?>"required>
+                        <input type="text" class="form-control" id="nama" name="nama" value="<?= htmlspecialchars($user['nama']); ?>" required>
                         <label for="nama">Nama User</label>
                     </div>
                 </div>
             </div>
             <br>
-        <div class="row g-2 mt-3">
+            <div class="row g-2 mt-3">
                 <div class="col-md">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= htmlspecialchars($user['no_hp']); ?>"required>
+                        <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?= htmlspecialchars($user['no_hp']); ?>" required>
                         <label for="no_hp">Nomor HP</label>
                     </div>
                 </div>
@@ -58,7 +76,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <br>
             <button type="submit" class="btn btn-primary">Update</button>
         </form>
-
     </div>
 </body>
 
