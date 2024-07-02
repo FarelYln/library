@@ -23,10 +23,11 @@ if (isset($_GET['id'])) {
     <title>Library | Cerita</title>
 </head>
 <body>
+    
     <div class="container">
         <h2 class="mt-4"><?= htmlspecialchars($buku['nama_buku'] ?? ''); ?></h2>
         <p><?= htmlspecialchars($buku['story'] ?? ''); ?></p>
-        <a class="mb-3" href="index.php">&#x276E; Kembali ke Daftar Buku</a>
+        <a class="mt-2" href="index.php">&#x276E; Kembali ke Daftar Buku</a>
     </div>
 </body>
 </html>
