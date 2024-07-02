@@ -7,7 +7,7 @@ require_once __DIR__ ."/../navbar.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman User</title>
+    <title>Library | User</title>
 </head>
 <body>
     <div class="container">
@@ -20,7 +20,7 @@ require_once __DIR__ ."/../navbar.php";
                     <th>ID</th>
                     <th>User</th>
                     <th>NO Hp</th>
-                    <!-- <th>Aksi</th> -->
+                    <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -33,11 +33,11 @@ require_once __DIR__ ."/../navbar.php";
                     <td><?= $no++ ?></td>
                     <td><?=$d['nama'] ?></td>
                     <td><?= $d['no_hp']?></td>
-                    <!-- <td>
+                    <td>
                         <a href="edit.php?id=<?=  $d['id'] ?>" class="btn btn-success">Edit</a>
 
-                        <a href="delete.php?id=<?= $d['id']; ?>" onclick="return confirm('apakah anda yakin?')" class="btn btn-danger">Hapus</a>
-                    </td> -->
+                        <a href="delete.php?id=<?= $d['id']; ?>" onclick="return confirm('Apakah Anda yakin?&#x2639;')" class="btn btn-danger">Hapus</a>
+                    </td>
                 </tr>
             <?php 
         }

@@ -7,7 +7,7 @@ require_once __DIR__ ."/../navbar.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Genre</title>
+    <title>Library | Genre</title>
 </head>
 <body>
     <div class="container">
@@ -35,7 +35,7 @@ require_once __DIR__ ."/../navbar.php";
                     <td><?= $d['nama_genre']?></td>
                     <td>
                         <a href="edit.php?id=<?= $d['id']?>" class="btn btn-success">Edit</a>
-                        <a href="delete.php?id=<?=  $d['id']?>" class="btn btn-danger">Delete</a>
+                        <a href="delete.php?id=<?=  $d['id']?>" class="btn btn-danger" onclick="return confirm('Apakah Anda yakin?&#x2639;')">Delete</a>
 
                     </td>
                 </tr>

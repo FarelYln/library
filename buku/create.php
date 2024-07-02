@@ -6,8 +6,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $genre_buku = mysqli_real_escape_string($koneksi, $_POST['genre_buku']);
     $penerbit = mysqli_real_escape_string($koneksi, $_POST['penerbit']);
     $tanggal_terbit = mysqli_real_escape_string($koneksi, $_POST['tanggal_terbit']);
+    $story = mysqli_real_escape_string($koneksi, $_POST['story']);
     
-    $query = "INSERT INTO buku (nama_buku, genre_buku, penerbit, tanggal_terbit) VALUES ('$nama_buku', '$genre_buku', '$penerbit', '$tanggal_terbit')";
+    $query = "INSERT INTO buku (nama_buku, genre_buku, penerbit, tanggal_terbit, story) VALUES ('$nama_buku', '$genre_buku', '$penerbit', '$tanggal_terbit', '$story')";
     if (mysqli_query($koneksi, $query)) {
         header('location: index.php');
         exit();
@@ -66,6 +67,14 @@ $result_genre = mysqli_query($koneksi, $query_genre);
                 <div class="form-floating">
                     <input type="date" class="form-control" id="tanggal_terbit" name="tanggal_terbit" required>
                     <label for="tanggal_terbit">Tanggal Terbit</label>
+                </div>
+            </div>
+        </div>
+        <div class="row g-2 mt-3">
+            <div class="col-md">
+                <div class="form-floating">
+                    <input type="text" class="form-control" id="story" name="story" required>
+                    <label for="story">Cerita</label>
                 </div>
             </div>
         </div>

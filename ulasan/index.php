@@ -14,7 +14,7 @@ $data = mysqli_query($koneksi,
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ulasan</title>
+    <title>Library | Rating</title>
 </head>
 <body>
     <div class="container">
@@ -45,7 +45,7 @@ $data = mysqli_query($koneksi,
                     <td><?= $d['buku_diulas'] ?></td>
                     <td>
                          <a href="edit.php?id=<?= $d['id'] ?>" class="btn btn-primary">Edit</a>
-                        <a href="delete.php?id=<?= $d['id'] ?>" onclick="return confirm('Apakah Anda Yakin?')" class="btn btn-danger">Hapus</a>
+                        <a href="delete.php?id=<?= $d['id'] ?>" onclick="return confirm('Apakah Anda yakin?&#x2639;')" class="btn btn-danger">Hapus</a>
                     </td>
                 </tr>
             <?php } ?>

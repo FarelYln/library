@@ -1,6 +1,9 @@
 <?php
 require_once __DIR__ . "/../navbar.php";
 
+// Initialize variables
+$buku = []; // Initialize $buku array to avoid undefined variable error
+
 // Fetch the book details if an ID is provided
 if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($koneksi, $_GET['id']);
@@ -18,13 +21,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $genre_buku = mysqli_real_escape_string($koneksi, $_POST['genre_buku']);
     $penerbit = mysqli_real_escape_string($koneksi, $_POST['penerbit']);
     $tanggal_terbit = mysqli_real_escape_string($koneksi, $_POST['tanggal_terbit']);
+    $story = mysqli_real_escape_string($koneksi, $_POST['story']);
 
     $query = "UPDATE buku SET 
               nama_buku = '$nama_buku', 
               genre_buku = '$genre_buku', 
               penerbit = '$penerbit', 
-              tanggal_terbit = '$tanggal_terbit'
+              tanggal_terbit = '$tanggal_terbit', 
+              story = '$story' 
               WHERE id = '$id'";
+
     if (mysqli_query($koneksi, $query)) {
         $pesan = "Data berhasil diperbarui.";
     } else {
@@ -47,11 +53,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container">
         <h2 class="mt-2">Edit Buku</h2>
         <form action="edit.php" method="POST" id="form">
-            <input type="hidden" name="id" value="<?= $buku['id']; ?>">
+            <input type="hidden" name="id" value="<?= htmlspecialchars($buku['id'] ?? ''); ?>">
             <div class="row g-2 mt-3">
                 <div class="col-md">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="nama_buku" name="nama_buku" value="<?= htmlspecialchars($buku['nama_buku']); ?>" required>
+                        <input type="text" class="form-control" id="nama_buku" name="nama_buku" value="<?= htmlspecialchars($buku['nama_buku'] ?? ''); ?>" required>
                         <label for="nama_buku">Nama Buku</label>
                     </div>
                 </div>
@@ -75,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row g-2 mt-3">
                 <div class="col-md">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="penerbit" name="penerbit" value="<?= htmlspecialchars($buku['penerbit']); ?>" required>
+                        <input type="text" class="form-control" id="penerbit" name="penerbit" value="<?= htmlspecialchars($buku['penerbit'] ?? ''); ?>" required>
                         <label for="penerbit">Penerbit</label>
                     </div>
                 </div>
@@ -84,8 +90,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <div class="row g-2 mt-3">
                 <div class="col-md">
                     <div class="form-floating">
-                        <input type="date" class="form-control" id="tanggal_terbit" name="tanggal_terbit" value="<?= htmlspecialchars($buku['tanggal_terbit']); ?>" required>
+                        <input type="date" class="form-control" id="tanggal_terbit" name="tanggal_terbit" value="<?= htmlspecialchars($buku['tanggal_terbit'] ?? ''); ?>" required>
                         <label for="tanggal_terbit">Tanggal Terbit</label>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div class="row g-2 mt-3">
+                <div class="col-md">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="story" name="story" value="<?= htmlspecialchars($buku['story'] ?? ''); ?>" required>
+                        <label for="story">Cerita</label>
                     </div>
                 </div>
             </div>
