@@ -12,22 +12,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cek_query = "SELECT * FROM buku WHERE nama_buku = '$nama_buku'";
     $cek_result = mysqli_query($koneksi, $cek_query);
 
-    if (mysqli_num_rows($cek_result) > 0) {
-        $pesan = "Nama buku sudah ada. Silakan gunakan nama lain.";
-    } else {
-        $query = "INSERT INTO buku (nama_buku, genre_buku, penerbit, tanggal_terbit, story) VALUES ('$nama_buku', '$genre_buku', '$penerbit', '$tanggal_terbit', '$story')";
-        if (mysqli_query($koneksi, $query)) {
-            header('location: index.php');
-            exit();
-        } else {
-            $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
+    // Validasi tahun
+    $year = date('Y', strtotime($tanggal_terbit));
+
+    // Validasi tanggal
+    $tanggal_hari_ini = date("Y-m-d");
+    if ($tanggal_terbit > $tanggal_hari_ini || strlen($year)>4) {
+        echo "<script>alert('Tanggal tidak valid');history.back();</script>";
+        exit();
+    }
+
+    // Jika validasi berhasil, lakukan insert ke database
+    $query = "INSERT INTO buku (nama_buku, genre_buku, penerbit, tanggal_terbit, story) VALUES ('$nama_buku', '$genre_buku', '$penerbit', '$tanggal_terbit', '$story')";
+    if (mysqli_query($koneksi, $query)) {
+        if($cek_result){ 
+            echo "<script>alert('Data Berhasil Ditambahkan');window.location.href='index.php'</script>";
         }
+        exit();
+    } else {
+        $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
     }
 }
 
 $query_genre = "SELECT * FROM genres";
 $result_genre = mysqli_query($koneksi, $query_genre);
-
 ?>
 
 <!DOCTYPE html>
@@ -58,7 +66,7 @@ $result_genre = mysqli_query($koneksi, $query_genre);
                     <select class="form-select" id="genre_buku" name="genre_buku" required>
                         <option value="" selected disabled>Pilih Genre</option>
                         <?php while($row = mysqli_fetch_assoc($result_genre)): ?>
-                            <option value="<?= $row['id']; ?>"><?= $row['nama_genre']; ?></option>
+                            <option value="<?= $row['id']; ?>"><?= htmlspecialchars($row['nama_genre']); ?></option>
                         <?php endwhile; ?>
                     </select>
                     <label for="genre_buku">Genre Buku</label>

@@ -23,6 +23,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tanggal_terbit = mysqli_real_escape_string($koneksi, $_POST['tanggal_terbit']);
     $story = mysqli_real_escape_string($koneksi, $_POST['story']);
 
+    $tanggal_hari_ini = date("Y-m-d");
+    if ($tanggal_terbit > $tanggal_hari_ini) {
+        echo "<script>alert('Tanggal tidak valid');history.back();</script>";
+        exit();
+    }
+    
     $query = "UPDATE buku SET 
               nama_buku = '$nama_buku', 
               genre_buku = '$genre_buku', 
@@ -37,8 +43,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
     }
 
-    header("Location: index.php?pesan=" . urlencode($pesan));
-    exit;
+    echo "<script>alert('Buku berhasil diubah!'); window.location.href='index.php';</script>";
 }
 ?>
 
@@ -105,7 +110,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
             <br>
-            <button type="submit" class="btn btn-primary">Update</button>
+            <a href="index.php" class="btn btn-secondary">&#x276E;&#x276E;Kembali</a>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
         </form>
     </div>
 </body>

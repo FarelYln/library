@@ -18,8 +18,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
     }
     
-    header("Location: index.php?pesan=" . urlencode($pesan));
-    exit;
+    echo "<script>alert('Genre berhasil diubah!'); window.location.href='index.php';</script>";
 }
 ?>
 
@@ -45,7 +44,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
         <br>
-        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="index.php" class="btn btn-secondary">&#x276E;&#x276E;Kembali</a>
+        <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
     </form>
 <?php else: ?>
     <p>Genre tidak ditemukan.</p>

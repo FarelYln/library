@@ -29,8 +29,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     mysqli_stmt_execute($stmt);
 
     if (mysqli_stmt_affected_rows($stmt) > 0) {
-        header('Location: index.php');
-        exit();
+        echo '<script>alert("Ulasan berhasil diubah!"); window.location.href="index.php"</script>';
     }
 }
 
@@ -94,6 +93,7 @@ $result_buku = mysqli_stmt_get_result($stmt);
                 </div>
             </div>
         </div>
+        <a href="index.php" class="btn btn-secondary">&#x276E;&#x276E;Kembali</a>
         <button type="submit" class="btn btn-primary mt-2">Simpan Perubahan</button>
     </form>
 </div>

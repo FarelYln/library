@@ -10,7 +10,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               VALUES ('$rating', '$nama_pengulas', '$buku_diulas')";
     
     if (mysqli_query($koneksi, $query)) {
-        header('location: index.php');
+        if($query){
+            echo "<script>alert('Data Berhasil Ditambahkan');window.location.href='index.php'</script>";
+        }
         exit();
     }
 }

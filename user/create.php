@@ -5,14 +5,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama = mysqli_real_escape_string($koneksi, $_POST['nama']);
     $no_hp = mysqli_real_escape_string($koneksi, $_POST['no_hp']);
     
-    $query = "INSERT INTO user (nama, no_hp) VALUES ('$nama', '$no_hp')";
-    if (mysqli_query($koneksi, $query)) {
-        if($query){
-        header('location: index.php');
-        exit();
-        }
+    // Check if nama or no_hp already exists
+    $checkQuery = "SELECT * FROM user WHERE nama = '$nama' OR no_hp = '$no_hp'";
+    $checkResult = mysqli_query($koneksi, $checkQuery);
+
+    if (mysqli_num_rows($checkResult) > 0) {
+        $pesan = "Nama atau Nomor HP sudah ada. Gunakan yang lain.";
     } else {
-        $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        $query = "INSERT INTO user (nama, no_hp) VALUES ('$nama', '$no_hp')";
+        if (mysqli_query($koneksi, $query)) {
+            if($query){
+                echo "<script>alert('Data Berhasil Ditambahkan');window.location.href='index.php'</script>";
+            }
+            exit();
+        } else {
+            $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
+        }
     }
 }
 $query = "SELECT * FROM user";
@@ -48,6 +56,11 @@ $result = mysqli_query($koneksi, $query);
 <body>
 <div class="container">
     <h2>Tambah user</h2>
+    <?php if (isset($pesan)): ?>
+        <div class="alert alert-danger">
+            <?php echo $pesan; ?>
+        </div>
+    <?php endif; ?>
     <form action="create.php" method="POST" id="form" onsubmit="return validateForm()">
         <div class="row g-2 mt-3">
             <div class="col-md">

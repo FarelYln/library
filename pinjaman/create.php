@@ -7,11 +7,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $buku_dipinjam = mysqli_real_escape_string($koneksi, $_POST['buku_dipinjam']);
     $tgl_pinjam = mysqli_real_escape_string($koneksi, $_POST['tgl_pinjam']);
     $tgl_kembali = mysqli_real_escape_string($koneksi, $_POST['tgl_kembali']);
+
+    if($tgl_kembali <= $tgl_pinjam ){
+        echo "<script>alert('Tanggal kembali tidak boleh kurang dari tanggal pinjam');window.location.href='create.php'</script>";
+        exit();
+    }
     
     $query = "INSERT INTO pinjaman (nama_peminjam, buku_dipinjam, tgl_pinjam, tgl_kembali) VALUES ('$user_id', '$buku_dipinjam', '$tgl_pinjam', '$tgl_kembali')";
     if (mysqli_query($koneksi, $query)) {
-        header('location: index.php');
-        exit();
+        if($query){
+            echo "<script>alert('Data Berhasil Ditambahkan');window.location.href='index.php'</script>";
+        }
     } else {
         $pesan = "Error: " . $query . "<br>" . mysqli_error($koneksi);
     }

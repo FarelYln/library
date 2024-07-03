@@ -15,14 +15,17 @@ require_once __DIR__ . "/koneksi.php";
 </head>
 
 <style>
+  @import url('https://fonts.googleapis.com/css2?family=Bree+Serif&family=Margarine&family=Pacifico&family=Playwrite+NG+Modern:wght@100..400&display=swap');
     body {
         font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
         background-color: rgb(235, 214, 171);
     }
     nav{
+      font-family: "Bree Serif", serif;
+  font-weight: 400;
+  font-style: normal;
       background-color: rgb(232, 189, 97);
     }
-
     tbody{
      background-color: rgb(252, 242, 220);
     }

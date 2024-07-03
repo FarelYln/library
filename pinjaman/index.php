@@ -37,9 +37,12 @@ $data = mysqli_query(
                 </tr>
             </thead>
             <tbody>
-                <?php while ($d = mysqli_fetch_array($data)) { ?>
+                <?php 
+                
+                $no=1;
+                while ($d = mysqli_fetch_array($data)) { ?>
                     <tr>
-                        <td><?= $d['id']; ?></td>
+                        <td><?= $no++; ?></td>
                         <td><?= $d['nama_peminjam']; ?></td>
                         <td><?= $d['nama_buku']; ?></td>
                         <td><?= $d['tgl_pinjam']; ?></td>

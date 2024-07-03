@@ -15,8 +15,8 @@
     </style>
     <div class="container">
     <ul >
-        <li><a href="/dashboard.php">Dashboard <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a9 9 0 1 0 0 18a9 9 0 0 0 0-18M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11s-4.925 11-11 11S1 18.075 1 12m5.769-3.866l3.464 2l-1 1.732l-3.464-2zm11.464 1.732l-3.464 2l-1-1.732l3.464-2zM7.67 15.499A4.998 4.998 0 0 1 12 13a4.998 4.998 0 0 1 4.33 2.5l.501.865l-1.731 1.001l-.5-.865A2.995 2.995 0 0 0 12 15a3 3 0 0 0-2.6 1.5l-.5.866l-1.731-1.001z"/></svg></a></li>
-        <li><a href="/buku/index.php">Buku</a></li>
+        <li><a href="/dashboard.php">Dashboard <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 20 20"><path fill="currentColor" d="M5 17h13v2H5c-1.66 0-3-1.34-3-3V4c0-1.66 1.34-3 3-3h13v14H5c-.55 0-1 .45-1 1s.45 1 1 1m2-3.5v-11c0-.28-.22-.5-.5-.5s-.5.22-.5.5v11c0 .28.22.5.5.5s.5-.22.5-.5"/></svg></a></li>
+        <li><a href="/buku/index.php">&nbsp;Buku</a></li>
         <li><a href="/genre/index.php">Genre</a></li>
         <li><a href="/pinjaman/index.php">Pinjaman</a></li>
         <li><a href="/ulasan/index.php">Ulasan</a></li>
