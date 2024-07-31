@@ -8,14 +8,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $tgl_pinjam = mysqli_real_escape_string($koneksi, $_POST['tgl_pinjam']);
     $tgl_kembali = mysqli_real_escape_string($koneksi, $_POST['tgl_kembali']);
 
-    if($tgl_kembali <= $tgl_pinjam ){
+    if ($tgl_kembali <= $tgl_pinjam) {
         echo "<script>alert('Tanggal kembali tidak boleh kurang dari tanggal pinjam');window.location.href='create.php'</script>";
         exit();
     }
     
     $query = "INSERT INTO pinjaman (nama_peminjam, buku_dipinjam, tgl_pinjam, tgl_kembali) VALUES ('$user_id', '$buku_dipinjam', '$tgl_pinjam', '$tgl_kembali')";
     if (mysqli_query($koneksi, $query)) {
-        if($query){
+        if ($query) {
             echo "<script>alert('Data Berhasil Ditambahkan');window.location.href='index.php'</script>";
         }
     } else {
@@ -36,6 +36,20 @@ $result_user = mysqli_query($koneksi, $query_user);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pinjam Buku</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#form").on("submit", function(event) {
+            var tglPinjam = new Date($("#tgl_pinjam").val());
+            var tglKembali = new Date($("#tgl_kembali").val());
+
+            if (tglKembali <= tglPinjam) {
+                alert("Tanggal kembali tidak boleh kurang dari atau sama dengan tanggal pinjam");
+                event.preventDefault(); // Mencegah form submit
+            }
+        });
+    });
+    </script>
 </head>
 <body>
 <div class="container">

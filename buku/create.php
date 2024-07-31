@@ -12,12 +12,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $cek_query = "SELECT * FROM buku WHERE nama_buku = '$nama_buku'";
     $cek_result = mysqli_query($koneksi, $cek_query);
 
-    // Validasi tahun
+    // Validate date
     $year = date('Y', strtotime($tanggal_terbit));
+    if (strlen($year) > 4) {
+        echo "<script>alert('Tanggal tidak valid');history.back();</script>";
+        exit();
+    }
 
-    // Validasi tanggal
     $tanggal_hari_ini = date("Y-m-d");
-    if ($tanggal_terbit > $tanggal_hari_ini || strlen($year)>4) {
+    if ($tanggal_terbit > $tanggal_hari_ini) {
         echo "<script>alert('Tanggal tidak valid');history.back();</script>";
         exit();
     }

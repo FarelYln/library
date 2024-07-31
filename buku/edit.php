@@ -1,5 +1,6 @@
 <?php
 require_once __DIR__ . "/../navbar.php";
+require_once __DIR__ . "/../koneksi.php"; // Ensure you have the database connection here
 
 // Initialize variables
 $buku = []; // Initialize $buku array to avoid undefined variable error
@@ -22,6 +23,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $penerbit = mysqli_real_escape_string($koneksi, $_POST['penerbit']);
     $tanggal_terbit = mysqli_real_escape_string($koneksi, $_POST['tanggal_terbit']);
     $story = mysqli_real_escape_string($koneksi, $_POST['story']);
+
+    // Validate date
+    $year = date('Y', strtotime($tanggal_terbit));
+    if (strlen($year) > 4) {
+        echo "<script>alert('Tanggal tidak valid');history.back();</script>";
+        exit();
+    }
 
     $tanggal_hari_ini = date("Y-m-d");
     if ($tanggal_terbit > $tanggal_hari_ini) {
@@ -53,6 +61,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Buku</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+    $(document).ready(function() {
+        $("#form").on("submit", function(event) {
+            var tglTerbit = $("#tanggal_terbit").val();
+            var year = new Date(tglTerbit).getFullYear();
+
+            if (year > 9999) {
+                alert("Tanggal tidak valid: tahun lebih dari 4 digit");
+                event.preventDefault(); // Mencegah form submit
+            }
+        });
+    });
+    </script>
 </head>
 <body>
     <div class="container">

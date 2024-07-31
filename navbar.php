@@ -48,23 +48,23 @@ require_once __DIR__ . "/koneksi.php";
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/dashboard.php">Dashboard</a>
+          <a class="nav-link active" aria-current="page" href="../dashboard.php">Dashboard</a>
         </li>
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="/buku/index.php">Buku</a>
+          <a class="nav-link active" aria-current="page" href="../buku/index.php">Buku</a>
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Lainnya
           </a>
           <ul class="dropdown-menu dropdown-menu-end mt-2">
-            <li><a class="dropdown-item" href="/genre/index.php">genre</a></li>
-            <li><a class="dropdown-item" href="/pinjaman/index.php">Pinjaman</a></li>
+            <li><a class="dropdown-item" href="../genre/index.php">genre</a></li>
+            <li><a class="dropdown-item" href="../pinjaman/index.php">Pinjaman</a></li>
             <li><a href=""></a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="/ulasan/index.php">Ulasan</a></li>
-            <li><a class="dropdown-item" href="/user/index.php">User</a></li>
+            <li><a class="dropdown-item" href="../ulasan/index.php">Ulasan</a></li>
+            <li><a class="dropdown-item" href="../user/index.php">User</a></li>
           </ul>
         </li>
       </ul>
